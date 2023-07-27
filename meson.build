@@ -12,7 +12,15 @@ gsl_dep = dependency('gsl')
 json_dep = dependency('json-c')
 deps = [pigpio_dep, gsl_dep, json_dep]
 
-shared_library('aylp_pigpio', 'aylp_pigpio.c',
+shared_library('aylp_pigpio_pwm', 'aylp_pigpio_pwm.c',
+	name_prefix: '',
+	install: true,
+	dependencies: deps,
+	include_directories: incdir,
+	override_options: 'b_lundef=false'
+)
+
+shared_library('aylp_pigpio_clock', 'aylp_pigpio_clock.c',
 	name_prefix: '',
 	install: true,
 	dependencies: deps,

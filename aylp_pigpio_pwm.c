@@ -1,7 +1,7 @@
 #include "anyloop.h"
 #include "logging.h"
 #include "xalloc.h"
-#include "aylp_pigpio.h"
+#include "aylp_pigpio_pwm.h"
 
 
 int aylp_pigpio_init(struct aylp_device *self)
@@ -45,6 +45,8 @@ int aylp_pigpio_init(struct aylp_device *self)
 		return -1;
 	}
 
+	// TODO: set up communication to pigpiod
+
 	// set types and units
 	self->type_in = AYLP_T_VECTOR;
 	self->units_in = AYLP_U_MINMAX;
@@ -58,7 +60,7 @@ int aylp_pigpio_process(struct aylp_device *self, struct aylp_state *state)
 {
 	UNUSED(state);
 	struct aylp_pigpio_data *data = self->device_data;
-	// TODO
+	// TODO: communicate to pigpiod that we need to pwm
 	return 0;
 }
 
